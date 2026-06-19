@@ -3,39 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomi Website</title>
+    <title>Tomi.Website — Креативные цифровые решения</title>
+    
+    <!-- Подключаем современный шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        /* ОСНОВНЫЕ СТИЛИ */
+        :root {
+            --bg-color: #0c0d10; /* Глубокий темный фон */
+            --text-main: #e0e6ed;
+            --accent: #00f2fe; /* Яркий акцентный бирюзовый */
+            --accent-hover: #4facfe;
+            --card-bg: #16181d;
+            --font-accent: 'Unbounded', sans-serif;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
         }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
         .container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        h1 {
-            color: #4f46e5;
+
+        /* КНОПКИ */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--bg-color);
+            font-family: var(--font-accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            border-radius: 50px;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ШАПКА САЙТА (HEADER) */
+        header {
+            padding: 20px 0;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ГЛАВНАЯ СЕКЦИЯ (HERO) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1c22 0%, var(--bg-color) 70%);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-accent);
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* СЕКЦИЯ МОИ РАБОТЫ */
+        .portfolio {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-accent);
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #1f2229;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
+        }
+
+        .item-image {
+            height: 200px;
+            background-color: #2a2e37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #3f4450;
+        }
+
+        .item-info {
+            padding: 25px;
+        }
+
+        .item-info h3 {
+            font-family: var(--font-accent);
+            font-size: 20px;
             margin-bottom: 10px;
         }
-        p {
-            font-size: 18px;
-            color: #666;
+
+        .item-info p {
+            color: #94a3b8;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* ПОДВАЛ (FOOTER) */
+        footer {
+            padding: 50px 0;
+            background-color: var(--card-bg);
+            text-align: center;
+            border-top: 1px solid #1f2229;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 20px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            .nav-links {
+                display: none; /* Прячем меню на мобильных для простоты кода */
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>👋 Добро пожаловать!</h1>
-        <p>Мой сайт успешно запущен и работает.</p>
-    </div>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Tomi.</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#portfolio">Работы</a></li>
+                    <li><a href="mailto:твой-email@mail.com">Контакт</a></li>
+                </ul>
+                <a href="mailto:твой-email@mail.com" class="btn">Связаться</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главная секция (Hero) -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Создаю цифровой<br> опыт будущего</h1>
+            <p>Я Tomi — независимый веб-разработчик и дизайнер, превращающий смелые идеи в современные, быстрые и запоминающиеся сайты.</p>
+            <a href="#portfolio" class="btn">Смотреть проекты</a>
+        </div>
+    </section>
+
+    <!-- Секция Работы -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Мои Проекты</h2>
+            <div class="portfolio-grid">
+                
+                <!-- Проект 1 -->
+                <div class="portfolio-item">
+                    <div class="item-image">💻</div>
+                    <div class="item-info">
+                        <h3>Сайт-портфолио</h3>
+                        <p>Минималистичный дизайн для демонстрации креативных работ.</p>
+                        <a href="#" class="btn">Открыть</a>
+                    </div>
+                </div>
+
+                <!-- Проект 2 -->
+                <div class="portfolio-item">
+                    <div class="item-image">🛍️</div>
+                    <div class="item-info">
+                        <h3>E-commerce платформа</h3>
+                        <p>Современный онлайн-магазин с удобной навигацией.</p>
+                        <a href="#" class="btn">Открыть</a>
+                    </div>
+                </div>
+
+                <!-- Проект 3 -->
+                <div class="portfolio-item">
+                    <div class="item-image">📱</div>
+                    <div class="item-info">
+                        <h3>Мобильное приложение</h3>
+                        <p>Интерфейс для фитнес-трекера нового поколения.</p>
+                        <a href="#" class="btn">Открыть</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <!-- Замени ссылки на свои реальные соцсети -->
+                <a href="#" title="GitHub">🐙</a>
+                <a href="#" title="Telegram">✈️</a>
+                <a href="#" title="Instagram">📸</a>
+            </div>
+            <p class="copyright">&copy; 2026 Tomi.Website. Все права защищены.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
